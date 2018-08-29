@@ -7,7 +7,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class ResumeDetailViewModel: BaseViewModel {
-    var resume: ResumeModel!
+    var listCompany = Variable<[CompanyInfoModel]>([])
+    
+    var resume: ResumeModel! {
+        didSet {
+            self.listCompany.value = resume.listCompany ?? []
+        }
+    }
 }

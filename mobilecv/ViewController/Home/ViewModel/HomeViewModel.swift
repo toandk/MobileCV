@@ -15,6 +15,16 @@ class HomeViewModel: BaseViewModel {
     let apiController = APIController.sharedController
     let disboseBag: DisposeBag
     
+    lazy var placeholderResume: ResumeModel = {
+        var model = ResumeModel()
+        model.localFile = "view_more.jpg"
+        return model
+    }()
+    
+    var isLoadingObservable: Observable<Bool> {
+        return isLoading.asObservable()
+    }
+    
     init(disboseBag: DisposeBag) {
         self.disboseBag = disboseBag
         super.init()
@@ -33,7 +43,11 @@ class HomeViewModel: BaseViewModel {
                     ?? Observable.empty()
             }
             .toArray()
-
+            .do(onNext: { [weak self] _ in
+                    self?.isLoading.value = false
+                }, onError: { [weak self] _ in
+                    self?.isLoading.value = false
+            })
     }
     
     func fetchListCategory() -> Observable<CategoryModel> {
@@ -54,7 +68,9 @@ class HomeViewModel: BaseViewModel {
     }
     
     func getCategory(at index: NSInteger) -> CategoryModel? {
-        return index >= 0 && index < listCategory.value.count ? listCategory.value[index] : nil
+        return index >= 0 && index < listCategory.value.count
+            ? listCategory.value[index]
+            : nil
     }
     
     func getListResume(ofCategoryAtIndex index: NSInteger) -> [ResumeModel]? {

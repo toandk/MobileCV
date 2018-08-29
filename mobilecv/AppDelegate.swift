@@ -10,7 +10,6 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
-import GlidingCollection
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

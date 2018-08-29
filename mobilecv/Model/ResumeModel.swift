@@ -24,10 +24,15 @@ class ResumeModel: Mappable {
     var birthday: String?
     var github: String?
     var website: String?
+    var localFile: String?
     var listCompany: [CompanyInfoModel]?
     
     
     required init?(map: Map) {
+        
+    }
+    
+    init() {
         
     }
     

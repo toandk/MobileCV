@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GlidingCollection
 import Kingfisher
 import Hero
 
@@ -37,12 +36,15 @@ class CategoryItemCell: BaseCollectionViewCell, ReactiveView {
     
     func bindViewModel(viewModel: AnyObject) {
         if let resume = viewModel as? ResumeModel {
-            imgView.kf.setImage(with: URL(string: resume.cover ?? ""))
+            if resume.localFile != nil {
+                imgView.image = UIImage(named: resume.localFile!)
+            }
+            else {
+                imgView.kf.setImage(with: URL(string: resume.cover ?? ""))
+            }
             avatarView.kf.setImage(with: URL(string: resume.avatar ?? ""))
             nameLabel.text = resume.username
-            imgView.hero.id = "cover\(resume.userId!)"
-            avatarView.hero.id = "avatar\(resume.userId!)"
-            nameLabel.hero.id = "name\(resume.userId!)"
+            UIView.recursiveSetHeroId(view: self.contentView, identifier: resume.userId ?? "")
         }
     }
 }

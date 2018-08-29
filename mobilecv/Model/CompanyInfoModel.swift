@@ -14,6 +14,9 @@ class CompanyInfoModel: Mappable {
     var shortDescription: String?
     var logo: String?
     var listProject: [ProjectModel]?
+    var startDate: String?
+    var endDate: String?
+    var role: String?
     
     required init?(map: Map) {
         
@@ -25,5 +28,8 @@ class CompanyInfoModel: Mappable {
         shortDescription        <- map["description"]
         logo                    <- map["logo"]
         listProject             <- map["projects"]
+        startDate               <- map["startDate"]
+        endDate                 <- map["endDate"]
+        role                    <- map["role"]
     }
 }

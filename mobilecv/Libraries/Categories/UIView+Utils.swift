@@ -102,3 +102,27 @@ extension UIView {
         }
     }
 }
+
+extension UIView {
+    private static var _originalId: [String: String] = [:]
+    
+    @IBInspectable var heroOriginalId: String? {
+        get {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            return UIView._originalId[tmpAddress]
+        }
+        set {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            UIView._originalId[tmpAddress] = newValue
+        }
+    }
+    
+    static func recursiveSetHeroId(view: UIView, identifier: String) {
+        for subView in view.subviews {
+            if subView.heroOriginalId != nil && subView.heroOriginalId!.count > 0 {
+                subView.hero.id = "\(subView.heroOriginalId!) \(identifier)"
+            }
+            recursiveSetHeroId(view: subView, identifier: identifier)
+        }
+    }
+}

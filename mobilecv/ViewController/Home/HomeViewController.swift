@@ -8,12 +8,11 @@
 
 import UIKit
 import RxSwift
-import GlidingCollection
 import Hero
 
 class HomeViewController: BaseViewController {
-    
-    @IBOutlet var glidingView: GlidingCollection!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var glidingView: GlidingCollection!
     let disposeBag = DisposeBag()
     var viewModel: HomeViewModel!
 
@@ -36,10 +35,19 @@ class HomeViewController: BaseViewController {
     
     private func bindViewModel() {
         viewModel = HomeViewModel(disboseBag: self.disposeBag)
+        viewModel.isLoadingObservable
+            .bind(to: self.loadingView.rx.isAnimating)
+            .disposed(by: self.disposeBag)
+        viewModel.isLoadingObservable
+            .map{ !$0 }
+            .bind(to: self.loadingView.rx.isHidden)
+            .disposed(by: self.disposeBag)
         viewModel.fetchListCategoryWithResume()
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] _ in
+                print("get list cate done")
                 self?.glidingView.reloadData()
+                self?.glidingView.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -48,14 +56,16 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let section = glidingView.expandedItemIndex
-        return viewModel.getListResume(ofCategoryAtIndex: section)?.count ?? 0
+        return (viewModel.getListResume(ofCategoryAtIndex: section)?.count ?? 0) + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryItemCell.className, for: indexPath) as? CategoryItemCell else { return UICollectionViewCell() }
         let section = glidingView.expandedItemIndex
         if let listResume = viewModel.getListResume(ofCategoryAtIndex: section) {
-            let resume = listResume[indexPath.row]
+            let resume = listResume.count > indexPath.row
+                ? listResume[indexPath.row]
+                : viewModel.placeholderResume
             cell.bindViewModel(viewModel: resume)
         }
         
@@ -67,13 +77,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let item = indexPath.item
         print("Selected item #\(item) in section #\(section)")
         
+        let category = viewModel.getCategory(at: section)!
+        if item >= category.listResume!.count {
+            return
+        }
+        
         let vModel = ResumeDetailViewModel()
-        vModel.resume = viewModel.getCategory(at: section)!.listResume![item]
+        vModel.resume = category.listResume![item]
         let newVC = ResumeDetailViewController(nibName: "ResumeDetailViewController", bundle: nil)
         newVC.viewModel = vModel
         newVC.hero.isEnabled = true
-//        self.hero.isEnabled = true
-//        self.push(viewController: newVC, animated: true)
         self.present(newVC, animated: true, completion: nil)
     }
 }

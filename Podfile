@@ -13,7 +13,6 @@ target 'mobilecv' do
     pod 'SwiftyJSON', '~> 4.0'
     pod 'FoldingCell'
     pod 'RAMAnimatedTabBarController'
-    pod 'GlidingCollection'
     pod 'Moya/RxSwift', '~> 11.0'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -24,5 +23,6 @@ target 'mobilecv' do
     pod 'RxFirebase/RemoteConfig'
     pod 'RxFirebase/Database'
     pod 'Hero'
+    pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
 end
 

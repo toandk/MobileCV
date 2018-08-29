@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Hero
+import RxSwift
+import RxCocoa
 
 class ResumeDetailViewController: BaseViewController {
     
@@ -20,9 +22,12 @@ class ResumeDetailViewController: BaseViewController {
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        bindViewModel()
     }
     
     func setupView() {
@@ -31,11 +36,20 @@ class ResumeDetailViewController: BaseViewController {
             nameLabel.text = resume.username
             avatarView.kf.setImage(with: URL(string: viewModel.resume.avatar ?? ""))
             coverView.kf.setImage(with: URL(string: viewModel.resume.cover ?? ""))
-            
-            coverView.hero.id = "cover\(resume.userId!)"
-            avatarView.hero.id = "avatar\(resume.userId!)"
-            nameLabel.hero.id = "name\(resume.userId!)"
+            UIView.recursiveSetHeroId(view: headerView, identifier: resume.userId ?? "")
         }
+    }
+    
+    func bindViewModel() {
+        tableView.rowHeight = 184
+        tableView.estimatedRowHeight = 184
+        tableView.register(ResumeDetailCell.getNib(), forCellReuseIdentifier: ResumeDetailCell.getIdentifier())
+        viewModel.listCompany.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: ResumeDetailCell.getIdentifier(), cellType: ResumeDetailCell.self)) { row, element, cell in
+                cell.setupCell(company: element, index: row + 1)
+                cell.hero.modifiers = [.fade, .scale(0.5)]
+            }
+            .disposed(by: disposeBag)
     }
     
     @IBAction func backViewAction() {
