@@ -23,6 +23,7 @@ target 'mobilecv' do
     pod 'RxFirebase/RemoteConfig'
     pod 'RxFirebase/Database'
     pod 'Hero'
+    pod 'RxDataSources', '~> 3.0'
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
 end
 

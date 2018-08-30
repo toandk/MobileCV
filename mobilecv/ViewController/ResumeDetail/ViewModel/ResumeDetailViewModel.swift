@@ -17,4 +17,11 @@ class ResumeDetailViewModel: BaseViewModel {
             self.listCompany.value = resume.listCompany ?? []
         }
     }
+    
+    func getCompany(atIndex: Int) -> CompanyInfoModel? {
+        if atIndex >= 0 && atIndex < listCompany.value.count {
+            return listCompany.value[atIndex]
+        }
+        return nil
+    }
 }

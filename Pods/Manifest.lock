@@ -5,6 +5,7 @@ PODS:
     - ChameleonFramework/Default
   - Crashlytics (3.10.3):
     - Fabric (~> 1.7.8)
+  - Differentiator (3.0.2)
   - Fabric (1.7.8)
   - Firebase/Core (5.4.0):
     - Firebase/CoreOnly
@@ -73,6 +74,10 @@ PODS:
   - Result (3.2.4)
   - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxFirebase/Database (0.2.2):
     - FirebaseDatabase (~> 5)
     - RxCocoa (~> 4)
@@ -99,6 +104,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.3)
   - RAMAnimatedTabBarController
   - RealmSwift
+  - RxDataSources (~> 3.0)
   - RxFirebase/Database
   - RxFirebase/RemoteConfig
   - RxSwift
@@ -108,6 +114,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Crashlytics
+    - Differentiator
     - Fabric
     - Firebase
     - FirebaseABTesting
@@ -131,6 +138,7 @@ SPEC REPOS:
     - RealmSwift
     - Result
     - RxCocoa
+    - RxDataSources
     - RxFirebase
     - RxSwift
     - SwiftyJSON
@@ -149,6 +157,7 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Crashlytics: 2aea305161a2122492698c75af27f2b98aa49a25
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
@@ -172,10 +181,11 @@ SPEC CHECKSUMS:
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxFirebase: 48f737d0f77c5ef8c5bda17bc6340cdbfcbb7641
   RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 406b02f2134d599125a68255419599ee0079d7a5
+PODFILE CHECKSUM: 9219d6aa582f014d984f0a022584ed259f4e1018
 
 COCOAPODS: 1.5.3

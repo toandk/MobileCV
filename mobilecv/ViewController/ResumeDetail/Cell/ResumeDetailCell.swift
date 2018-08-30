@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Hero
 
 class ResumeDetailCell: BaseTableViewCell {
     @IBOutlet weak var companyNameLabel: UILabel!
@@ -20,6 +21,11 @@ class ResumeDetailCell: BaseTableViewCell {
     @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var leftView: UIView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.hero.modifiers = [.fade, .scale(0.5)]
+    }
+    
     func setupCell(company: CompanyInfoModel, index: Int) {
         companyNameLabel.text = company.name
         roleLabel1.text = company.role
@@ -27,6 +33,7 @@ class ResumeDetailCell: BaseTableViewCell {
         indexLabel.text = "#\(index)"
         startDateLabel.text = company.startDate
         endDateLabel.text = company.endDate
-        leftView.backgroundColor = UIColor.randomFlat
+        leftView.backgroundColor = UIColor.randomColor(index: index)
+        companyLogo.kf.setImage(with: URL(string: company.logo ?? ""))
     }
 }

@@ -12,6 +12,8 @@ import ObjectMapper
 class ProjectModel: Mappable {
     var name: String?
     var role: String?
+    var startDate: String?
+    var endDate: String?
     var projectDescription: String?
     var listPhoto: [String]?
     var link: String?
@@ -22,10 +24,12 @@ class ProjectModel: Mappable {
     
     // Mappable
     func mapping(map: Map) {
-        name             <- map["name"]
+        name                    <- map["name"]
         role                    <- map["role"]
         projectDescription      <- map["description"]
         listPhoto               <- map["photos"]
         link                    <- map["link"]
+        startDate               <- map["startDate"]
+        endDate                 <- map["endDate"]
     }
 }

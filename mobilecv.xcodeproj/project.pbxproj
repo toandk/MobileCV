@@ -36,6 +36,11 @@
 		701EBBC421359916006A2F52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 701EBBC321359916006A2F52 /* GoogleService-Info.plist */; };
 		701EBBCA21366BA6006A2F52 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701EBBC821366BA6006A2F52 /* ProjectDetailViewController.swift */; };
 		701EBBCB21366BA6006A2F52 /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701EBBC921366BA6006A2F52 /* ProjectDetailViewController.xib */; };
+		701EBBD021367C6F006A2F52 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701EBBCE21367C6F006A2F52 /* ProjectTableViewCell.swift */; };
+		701EBBD121367C6F006A2F52 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701EBBCF21367C6F006A2F52 /* ProjectTableViewCell.xib */; };
+		701EBBD321367C95006A2F52 /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701EBBD221367C95006A2F52 /* ProjectDetailViewModel.swift */; };
+		701EBBD521368804006A2F52 /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701EBBD421368804006A2F52 /* String+Size.swift */; };
+		701EBBD921378C20006A2F52 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701EBBD821378C20006A2F52 /* UIColor+Utils.swift */; };
 		703C42D821324A5F00D586DC /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701166EC213009F300F078F4 /* MainMenuViewController.swift */; };
 		703C42DB2132543800D586DC /* CategoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703C42DA2132543800D586DC /* CategoryItemCell.swift */; };
 		703C42DD2132546800D586DC /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703C42DC2132546800D586DC /* BaseCollectionViewCell.swift */; };
@@ -88,6 +93,11 @@
 		701EBBC321359916006A2F52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		701EBBC821366BA6006A2F52 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		701EBBC921366BA6006A2F52 /* ProjectDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailViewController.xib; sourceTree = "<group>"; };
+		701EBBCE21367C6F006A2F52 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		701EBBCF21367C6F006A2F52 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		701EBBD221367C95006A2F52 /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
+		701EBBD421368804006A2F52 /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
+		701EBBD821378C20006A2F52 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		703C42DA2132543800D586DC /* CategoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCell.swift; sourceTree = "<group>"; };
 		703C42DC2132546800D586DC /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		703C42DF213255AE00D586DC /* CategoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryItemCell.xib; sourceTree = "<group>"; };
@@ -288,10 +298,29 @@
 		701EBBC721366B8A006A2F52 /* ProjectDetail */ = {
 			isa = PBXGroup;
 			children = (
+				701EBBCD21367C58006A2F52 /* Cell */,
+				701EBBCC21367C50006A2F52 /* ViewModel */,
 				701EBBC821366BA6006A2F52 /* ProjectDetailViewController.swift */,
 				701EBBC921366BA6006A2F52 /* ProjectDetailViewController.xib */,
 			);
 			path = ProjectDetail;
+			sourceTree = "<group>";
+		};
+		701EBBCC21367C50006A2F52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				701EBBD221367C95006A2F52 /* ProjectDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		701EBBCD21367C58006A2F52 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				701EBBCE21367C6F006A2F52 /* ProjectTableViewCell.swift */,
+				701EBBCF21367C6F006A2F52 /* ProjectTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		703C42D92132541300D586DC /* Cell */ = {
@@ -321,6 +350,8 @@
 				704F6BD52133A77F00606CCF /* MapperExtension.swift */,
 				701EBB9A2135347B006A2F52 /* UIViewControllerExtension.swift */,
 				701EBB9C21354A17006A2F52 /* UIView+Utils.swift */,
+				701EBBD421368804006A2F52 /* String+Size.swift */,
+				701EBBD821378C20006A2F52 /* UIColor+Utils.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -435,6 +466,7 @@
 				701EBBCB21366BA6006A2F52 /* ProjectDetailViewController.xib in Resources */,
 				701166C2212FF43D00F078F4 /* Assets.xcassets in Resources */,
 				704F6BDD2134DEA900606CCF /* ResumeDetailViewController.xib in Resources */,
+				701EBBD121367C6F006A2F52 /* ProjectTableViewCell.xib in Resources */,
 				703C42E0213255AE00D586DC /* CategoryItemCell.xib in Resources */,
 				701166F121300A6F00F078F4 /* HomeViewController.xib in Resources */,
 				704F6BE22134EF2300606CCF /* ResumeDetailCell.xib in Resources */,
@@ -454,6 +486,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-mobilecv/Pods-mobilecv-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
@@ -466,6 +499,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -475,6 +509,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
@@ -487,6 +522,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -554,15 +590,19 @@
 				703C42DB2132543800D586DC /* CategoryItemCell.swift in Sources */,
 				701EBBC121359766006A2F52 /* GlidingCollectionDataSource.swift in Sources */,
 				701EBB992135279E006A2F52 /* ResumeDetailViewModel.swift in Sources */,
+				701EBBD321367C95006A2F52 /* ProjectDetailViewModel.swift in Sources */,
 				703C42E32132573E00D586DC /* NSObject+Helper.swift in Sources */,
 				7011672621300DBC00F078F4 /* TableViewBinding.swift in Sources */,
 				701EBB9B2135347B006A2F52 /* UIViewControllerExtension.swift in Sources */,
 				701EBBC221359766006A2F52 /* GlidingCollectionDelegate.swift in Sources */,
 				704F6BDB2134DE9F00606CCF /* ResumeDetailViewController.swift in Sources */,
+				701EBBD021367C6F006A2F52 /* ProjectTableViewCell.swift in Sources */,
 				7011672F21300DBC00F078F4 /* BaseViewModel.swift in Sources */,
 				701EBBBE21359766006A2F52 /* GlidingCollection.swift in Sources */,
 				703C42E82132EC0300D586DC /* CategoryModel.swift in Sources */,
+				701EBBD921378C20006A2F52 /* UIColor+Utils.swift in Sources */,
 				703C42DD2132546800D586DC /* BaseCollectionViewCell.swift in Sources */,
+				701EBBD521368804006A2F52 /* String+Size.swift in Sources */,
 				704F6BD221338B5600606CCF /* CompanyInfoModel.swift in Sources */,
 				7011672A21300DBC00F078F4 /* DatabaseHelper.swift in Sources */,
 				701166BB212FF43A00F078F4 /* AppDelegate.swift in Sources */,

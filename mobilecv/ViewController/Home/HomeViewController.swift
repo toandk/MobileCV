@@ -46,6 +46,7 @@ class HomeViewController: BaseViewController {
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] _ in
                 print("get list cate done")
+                self?.glidingView.isHidden = false
                 self?.glidingView.reloadData()
                 self?.glidingView.collectionView.reloadData()
             })
@@ -75,7 +76,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = glidingView.expandedItemIndex
         let item = indexPath.item
-        print("Selected item #\(item) in section #\(section)")
         
         let category = viewModel.getCategory(at: section)!
         if item >= category.listResume!.count {
@@ -87,7 +87,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let newVC = ResumeDetailViewController(nibName: "ResumeDetailViewController", bundle: nil)
         newVC.viewModel = vModel
         newVC.hero.isEnabled = true
-        self.present(newVC, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.present(newVC, animated: true, completion: nil)
+        }
+        
     }
 }
 
